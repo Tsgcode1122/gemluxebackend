@@ -35,6 +35,7 @@ exports.uploadPdf = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `TESTING----Please find the attached patient consent form for ${patientName}.`,
       attachments: [
@@ -70,6 +71,7 @@ exports.uploadEmailConsent = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `CONSENT FOR EMAIL/TEXT/TELEPHONE CALL APPOINTMENT 
 REMINDERS- ${patientName}`,
       text: `TESTING----Please find the attached Email consent form for ${patientName}.`,
@@ -80,7 +82,6 @@ REMINDERS- ${patientName}`,
           contentType: "application/pdf",
         },
       ],
-      bcc: ["softtoonzz@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
@@ -106,6 +107,7 @@ exports.uploadRevokeConsent = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `REVOCATION OF CONSENT TO TELEPHONE CALL APPOINTMENT REMINDERS, EMAIL AND/OR TEXT USAGE- ${patientName}`,
       text: ` TESTING----Please find the attached Revoke consent form for ${patientName}.`,
       attachments: [
@@ -115,7 +117,6 @@ exports.uploadRevokeConsent = async (req, res) => {
           contentType: "application/pdf",
         },
       ],
-      bcc: ["softtoonzz@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
@@ -141,6 +142,8 @@ exports.uploadPatientConsent = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `PATIENT CONSENT- ${patientName}`,
       text: ` TESTING----Please find the attached  Patient consent form for ${patientName}.`,
       attachments: [
@@ -150,7 +153,6 @@ exports.uploadPatientConsent = async (req, res) => {
           contentType: "application/pdf",
         },
       ],
-      bcc: ["softtoonzz@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
@@ -176,6 +178,7 @@ exports.uploadHippaConsent = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `HIPPA  CONSENT- ${patientName}`,
       text: ` TESTING----Please find the attached  HIPPA  consent form for ${patientName}.`,
       attachments: [
@@ -185,7 +188,6 @@ exports.uploadHippaConsent = async (req, res) => {
           contentType: "application/pdf",
         },
       ],
-      bcc: ["softtoonzz@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
@@ -211,6 +213,7 @@ exports.uploadQuestionaire = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "softtoonzz@gmail.com",
+      bcc: "falolatosin8@gmail.com",
       subject: `Questionaire- ${patientName}`,
       text: ` TESTING----Please find the attached  Questionaire form for ${patientName}.`,
       attachments: [
@@ -220,7 +223,6 @@ exports.uploadQuestionaire = async (req, res) => {
           contentType: "application/pdf",
         },
       ],
-      bcc: ["softtoonzz@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
