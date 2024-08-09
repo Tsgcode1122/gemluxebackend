@@ -45,7 +45,6 @@ exports.uploadPdf = async (req, res) => {
           contentType: "application/pdf",
         },
       ],
-      bcc: ["tosignrule22@gmail.com", "softtoonzz@gmail.com"],
     };
 
     await transporter.sendMail(mailOptions);
