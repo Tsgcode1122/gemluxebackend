@@ -17,8 +17,10 @@ app.get("/", (req, res) => res.send("hello GemLuxe"));
 
 // routes
 const emailRoutes = require("./routes/emailRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 app.use("/api/email", emailRoutes);
+app.use("/api/signature", uploadRoutes);
 
 // Start server
 app.listen(PORT, () => {
