@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const emailController = require("../controllers/emailController");
+const emailControl = require("../controllers/emailControl");
 const multer = require("multer");
 
 const upload = multer(); // Initialize multer
@@ -32,5 +33,5 @@ router.post(
   upload.single("pdf"),
   emailController.uploadQuestionaire,
 );
-
+router.post("/formSubmission", emailControl.formSubmission);
 module.exports = router;
