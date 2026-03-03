@@ -12,10 +12,10 @@ app.set("trust proxy", 1);
 app.use(cors());
 app.use(express.json());
 const corsOptions = {
-  origin: ["https://gemluxeaesthetics.com", "http://localhost:3000"], // Add your local dev URL too
+  origin: ["https://gemluxeaesthetics.com", "http://localhost:3000"], 
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // Required if you're using sessions or cookies
+  credentials: true, 
 };
 // app use
 app.get("/", (req, res) => res.send("hello GemLuxe"));
