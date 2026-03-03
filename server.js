@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5009;
 
 // 1. CORS CONFIGURATION (Must be before routes)
 const corsOptions = {
-  origin: ["https://gemluxeaesthetics.com", "http://localhost:3000"], 
+  origin: ["https://gemluxeaesthetics.com", "http://localhost:5173"], 
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true, 
