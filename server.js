@@ -11,7 +11,12 @@ const { sessionStore } = require("./db");
 app.set("trust proxy", 1);
 app.use(cors());
 app.use(express.json());
-
+const corsOptions = {
+  origin: ["https://gemluxeaesthetics.com", "http://localhost:3000"], // Add your local dev URL too
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Required if you're using sessions or cookies
+};
 // app use
 app.get("/", (req, res) => res.send("hello GemLuxe"));
 
@@ -31,3 +36,6 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Internal Server Error");
 });
+app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions));
