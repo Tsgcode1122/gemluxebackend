@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   port: 465,       // Use 465 instead of 587
   secure: true,    // Must be true for 465
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+ user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
   // Add these two lines to make the connection more robust:
   connectionTimeout: 10000, // 10 seconds
