@@ -3,14 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const connectDB = require("./db");
-const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 5009;
-const { sessionStore } = require("./db");
+
+// Middleware
 app.set("trust proxy", 1);
-app.use(cors());
+app.use(cors()); // Note: Always keep this above your routes
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // app use
 app.get("/", (req, res) => res.send("hello GemLuxe"));
@@ -26,6 +26,7 @@ app.use("/api/signature", uploadRoutes);
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
