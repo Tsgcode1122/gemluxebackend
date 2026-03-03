@@ -34,7 +34,7 @@ exports.uploadPdf = async (req, res) => {
     // Send email with attachment
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: "tsgcode201@gmail.com",
+      to: "gemluxemedspa@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
