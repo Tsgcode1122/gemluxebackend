@@ -4,13 +4,16 @@ require("dotenv").config();
 
 // Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
-       
-  secure: true,
+  host: "smtp.gmail.com",
+  port: 465,       // Use 465 instead of 587
+  secure: true,    // Must be true for 465
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    pass: process.env.EMAIL_PASS,
   },
+  // Add these two lines to make the connection more robust:
+  connectionTimeout: 10000, // 10 seconds
+  greetingTimeout: 10000,
 });
 
 // Handle form submissions
