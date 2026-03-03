@@ -5,13 +5,21 @@ require("dotenv").config();
 // Nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: "Gmail",
-       
+     host: "smtp.gmail.com",
+  port: 465,               // Use 465, NOT 587
+
   secure: true,
   auth: {
    
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
+  connectionTimeout: 20000, // 20 seconds
+  greetingTimeout: 20000,
+  socketTimeout: 20000,
+  tls: {
+    rejectUnauthorized: false // Helps if Render's SSL certs act up
+  }
 });
 
 // Handle form submissions
