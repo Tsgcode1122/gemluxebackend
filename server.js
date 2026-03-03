@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const emailRoutes = require("./routes/emailRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 
-app.get("/", (req, res) => res.send("hello GemLuxe - Server is Running"));
+app.get("/", (req, res) => res.send("hello GemLuxe - Server is Running ...."));
 
 app.use("/api/email", emailRoutes);
 app.use("/api/signature", uploadRoutes);

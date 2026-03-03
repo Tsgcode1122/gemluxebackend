@@ -19,7 +19,7 @@ connection.on("connected", () => {
 
 const sessionStore = new MongoDBStore({
   uri: mongoURL,
-  collection: "sessions",
+  collection: "sessions",e
 });
 // Catch errors
 sessionStore.on("error", function (error) {
