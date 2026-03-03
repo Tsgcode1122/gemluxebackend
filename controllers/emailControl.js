@@ -51,10 +51,12 @@ exports.formSubmission = async (req, res) => {
       message: "Inquiry sent successfully",
     });
   } catch (error) {
+    console.log(error);
+    
     console.error("Error sending inquiry email:", error);
     res.status(500).json({
       success: false,
-      message: "Failed to send inquiry email",
+      message: "Failed to send inquiry email" `${error}`,
     });
   }
 };
