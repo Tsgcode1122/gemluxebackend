@@ -29,7 +29,7 @@ exports.uploadPdf = async (req, res) => {
     // Send email with attachment
     const mailOptions = {
        from: "Gemluxe aesthetic <onboarding@resend.dev>",
-      to: "falolats@gmail.com",
+      to: "falolatosin8@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
