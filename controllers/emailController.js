@@ -1,8 +1,10 @@
-require("dotenv").config();
+const { Resend } = require("resend");
 const express = require("express");
+require("dotenv").config();
+const resend = new Resend(process.env.RESEND_API_KEY);
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+
 const generatePdf = require("./pdfService");
 
 const app = express();
@@ -11,14 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  service: "Gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+
 
 exports.uploadPdf = async (req, res) => {
   try {
@@ -33,8 +28,8 @@ exports.uploadPdf = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: "gemluxemedspa@gmail.com",
+       from: "Gemluxe aesthetic <onboarding@resend.dev>",
+      to: "falolats@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
@@ -47,7 +42,7 @@ exports.uploadPdf = async (req, res) => {
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
@@ -68,7 +63,7 @@ exports.uploadEmailConsent = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+   from: "Gemluxe aesthetic <onboarding@resend.dev>",
       to: "gemluxemedspa@gmail.com",
 
       subject: `CONSENT FOR EMAIL/TEXT/TELEPHONE CALL APPOINTMENT 
@@ -83,7 +78,7 @@ REMINDERS- ${patientName}`,
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
@@ -104,7 +99,7 @@ exports.uploadRevokeConsent = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+     from: "Gemluxe aesthetic <onboarding@resend.dev>",
       to: "gemluxemedspa@gmail.com",
 
       subject: `REVOCATION OF CONSENT TO TELEPHONE CALL APPOINTMENT REMINDERS, EMAIL AND/OR TEXT USAGE- ${patientName}`,
@@ -118,7 +113,7 @@ exports.uploadRevokeConsent = async (req, res) => {
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
@@ -139,7 +134,7 @@ exports.uploadPatientConsent = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+       from: "Gemluxe aesthetic <onboarding@resend.dev>",
       to: "gemluxemedspa@gmail.com",
 
       subject: `PATIENT CONSENT- ${patientName}`,
@@ -153,7 +148,7 @@ exports.uploadPatientConsent = async (req, res) => {
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
@@ -174,7 +169,7 @@ exports.uploadHippaConsent = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+       from: "Gemluxe aesthetic <onboarding@resend.dev>",
       to: "gemluxemedspa@gmail.com",
 
       subject: `HIPPA  CONSENT- ${patientName}`,
@@ -188,7 +183,7 @@ exports.uploadHippaConsent = async (req, res) => {
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
@@ -209,7 +204,7 @@ exports.uploadQuestionaire = async (req, res) => {
 
     // Send email with attachment
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+    from: "Gemluxe aesthetic <onboarding@resend.dev>",
       to: "gemluxemedspa@gmail.com",
 
       subject: `Questionaire- ${patientName}`,
@@ -223,7 +218,7 @@ exports.uploadQuestionaire = async (req, res) => {
       ],
     };
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
   } catch (error) {
