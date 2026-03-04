@@ -25,18 +25,18 @@ exports.uploadPdf = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
        from: "Gemluxe aesthetic <onboarding@resend.dev>",
-      to: "tsgcode201@gmail.com",
+      to: "falolatosin8@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
       attachments: [
         {
           filename: `${patientName}_Consent_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
@@ -60,7 +60,7 @@ exports.uploadEmailConsent = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
    from: "Gemluxe aesthetic <onboarding@resend.dev>",
@@ -72,7 +72,7 @@ REMINDERS- ${patientName}`,
       attachments: [
         {
           filename: `${patientName}_Email_Consent_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
@@ -96,7 +96,7 @@ exports.uploadRevokeConsent = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
      from: "Gemluxe aesthetic <onboarding@resend.dev>",
@@ -107,7 +107,7 @@ exports.uploadRevokeConsent = async (req, res) => {
       attachments: [
         {
           filename: `${patientName}_Revoke_Consent_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
@@ -131,7 +131,7 @@ exports.uploadPatientConsent = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
        from: "Gemluxe aesthetic <onboarding@resend.dev>",
@@ -142,7 +142,7 @@ exports.uploadPatientConsent = async (req, res) => {
       attachments: [
         {
           filename: `${patientName}_Patient_Consent_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
@@ -166,7 +166,7 @@ exports.uploadHippaConsent = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
        from: "Gemluxe aesthetic <onboarding@resend.dev>",
@@ -177,7 +177,7 @@ exports.uploadHippaConsent = async (req, res) => {
       attachments: [
         {
           filename: `${patientName}_HIPPA_Consent_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
@@ -201,7 +201,7 @@ exports.uploadQuestionaire = async (req, res) => {
 
     // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-
+const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
     from: "Gemluxe aesthetic <onboarding@resend.dev>",
@@ -212,7 +212,7 @@ exports.uploadQuestionaire = async (req, res) => {
       attachments: [
         {
           filename: `${patientName}_Questionaire_Form.pdf`,
-          content: pdfBuffer,
+          content: pdfBase64,
           contentType: "application/pdf",
         },
       ],
