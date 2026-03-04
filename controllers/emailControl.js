@@ -1,8 +1,17 @@
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 const express = require("express");
 require("dotenv").config();
-const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 // Handle form submissions
 exports.formSubmission = async (req, res) => {
@@ -10,9 +19,9 @@ exports.formSubmission = async (req, res) => {
 
   try {
     // Send email with inquiry details to falolatosin
-    await resend.emails.send({
-      from: "Gemluxe aesthetic <onboarding@resend.dev>",
-      to: "solomontosign@gmail.com",
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: "tsgcode201@gmail.com",
       subject: "New Inquiry Received",
       text: `
         Hello, you just received an inquiry form from ${name}.
