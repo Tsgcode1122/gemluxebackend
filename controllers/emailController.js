@@ -29,7 +29,7 @@ const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
        from: "Gemluxe aesthetic <onboarding@resend.dev>",
-      to: "falolatosin8@gmail.com",
+      to: "solomontosign@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
