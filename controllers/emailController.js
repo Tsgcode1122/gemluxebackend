@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+const FROM_EMAIL = "Gem Luxe Aesthetics <noreply@noreply.com.ng>";
 
 exports.uploadPdf = async (req, res) => {
   try {
@@ -28,8 +28,8 @@ exports.uploadPdf = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-       from: "Gemluxe aesthetic <onboarding@resend.dev>",
-      to: "gemluxemedspa@gmail.com",
+          from: FROM_EMAIL,
+      to: "falolatosin8@gmail.com",
 
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
@@ -63,7 +63,7 @@ exports.uploadEmailConsent = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-   from: "Gemluxe aesthetic <onboarding@resend.dev>",
+      from: FROM_EMAIL,
       to: "gemluxemedspa@gmail.com",
 
       subject: `CONSENT FOR EMAIL/TEXT/TELEPHONE CALL APPOINTMENT 
@@ -99,7 +99,7 @@ exports.uploadRevokeConsent = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-     from: "Gemluxe aesthetic <onboarding@resend.dev>",
+        from: FROM_EMAIL,
       to: "gemluxemedspa@gmail.com",
 
       subject: `REVOCATION OF CONSENT TO TELEPHONE CALL APPOINTMENT REMINDERS, EMAIL AND/OR TEXT USAGE- ${patientName}`,
@@ -134,7 +134,7 @@ exports.uploadPatientConsent = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-       from: "Gemluxe aesthetic <onboarding@resend.dev>",
+          from: FROM_EMAIL,
       to: "gemluxemedspa@gmail.com",
 
       subject: `PATIENT CONSENT- ${patientName}`,
@@ -169,7 +169,7 @@ exports.uploadHippaConsent = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-       from: "Gemluxe aesthetic <onboarding@resend.dev>",
+          from: FROM_EMAIL,
       to: "gemluxemedspa@gmail.com",
 
       subject: `HIPPA  CONSENT- ${patientName}`,
@@ -204,7 +204,7 @@ exports.uploadQuestionaire = async (req, res) => {
 const pdfBase64 = pdfBuffer.toString("base64");
     // Send email with attachment
     const mailOptions = {
-    from: "Gemluxe aesthetic <onboarding@resend.dev>",
+       from: FROM_EMAIL,
       to: "gemluxemedspa@gmail.com",
 
       subject: `Questionaire- ${patientName}`,

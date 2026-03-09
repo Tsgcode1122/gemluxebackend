@@ -12,7 +12,7 @@ exports.formSubmission = async (req, res) => {
     // Send email with inquiry details
     await resend.emails.send({
       from: "Gem Luxe Aesthetics <noreply@noreply.com.ng>",
-      to: ["falolatosin8@gmail.com"],
+      to: ["gemluxemedspa@gmail.com"],
       subject: "New Inquiry Received",
       text: `
         Hello, you just received an inquiry form from ${name}.

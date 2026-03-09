@@ -19,7 +19,7 @@ const generatePdf = async (htmlContent) => {
   `;
 
   await page.setContent(customStyles + htmlContent, {
-    waitUntil: "networkidle0",
+  waitUntil: "domcontentloaded",
   });
 
   const pdfBuffer = await page.pdf({
