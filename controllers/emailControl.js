@@ -1,27 +1,18 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 const express = require("express");
 require("dotenv").config();
 
-// Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Handle form submissions
 exports.formSubmission = async (req, res) => {
   const { name, email, number, service, message } = req.body;
 
   try {
-    // Send email with inquiry details to falolatosin
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "tsgcode201@gmail.com",
+    // Send email with inquiry details
+    await resend.emails.send({
+      from: "Gem Luxe Aesthetics <noreply@noreply.com.ng>",
+      to: ["falolatosin8@gmail.com"],
       subject: "New Inquiry Received",
       text: `
         Hello, you just received an inquiry form from ${name}.
@@ -54,7 +45,7 @@ exports.formSubmission = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    
+
     console.error("Error sending inquiry email:", error);
     res.status(500).json({
       success: false,
@@ -69,9 +60,9 @@ exports.emailSubscriber = async (req, res) => {
 
   try {
     // Send confirmation email to the subscriber
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
+    await resend.emails.send({
+      from: "Gem Luxe Aesthetics <noreply@noreply.com.ng>",
+      to: [email],
       subject: "Thank You for Subscribing",
       text: `
         Hello,
@@ -85,10 +76,10 @@ exports.emailSubscriber = async (req, res) => {
       `,
     });
 
-    // Notify falolatosin about the new subscriber
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "contact@thebetterhomepros.com",
+    // Notify Gem Luxe Aesthetics about the new subscriber
+    await resend.emails.send({
+      from: "Gem Luxe Aesthetics <noreply@noreply.com.ng>",
+      to: ["gemluxemedspa@gmail.com"],
       subject: "New Subscriber Alert",
       text: `
         Hello,
