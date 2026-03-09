@@ -22,6 +22,20 @@ const generatePdf = async (htmlContent) => {
     waitUntil: "domcontentloaded",
   });
 
+  await page.evaluate(async () => {
+    const images = Array.from(document.images);
+    await Promise.all(
+      images.map((img) => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      })
+    );
+  });
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
   const pdfBuffer = await page.pdf({
     format: "A4",
     printBackground: true,

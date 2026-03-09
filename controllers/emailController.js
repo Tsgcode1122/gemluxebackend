@@ -4,9 +4,9 @@ require("dotenv").config();
 const resend = new Resend(process.env.RESEND_API_KEY);
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const fs = require("fs");
 const generatePdf = require("./pdfService");
-
+const path = require("path");
 const app = express();
 
 app.use(cors());
@@ -23,25 +23,30 @@ exports.uploadPdf = async (req, res) => {
       return res.status(400).send("No HTML content provided");
     }
 
-    // Generate PDF from HTML content
     const pdfBuffer = await generatePdf(htmlContent);
-const pdfBase64 = pdfBuffer.toString("base64");
-    // Send email with attachment
-    const mailOptions = {
-          from: FROM_EMAIL,
-      to: "falolatosin8@gmail.com",
+    console.log("PDF buffer size:", pdfBuffer.length);
 
+    const filePath = path.join(__dirname, "test.pdf");
+    fs.writeFileSync(filePath, pdfBuffer);
+    console.log("PDF saved to file");
+
+    const pdfBase64 = fs.readFileSync(filePath).toString("base64");
+
+    const mailOptions = {
+      from: FROM_EMAIL,
+      to: ["falolatosin8@gmail.com"],
       subject: `New Patient Consent Form Submission - ${patientName}`,
       text: `Please find the attached patient consent form for ${patientName}.`,
+      html: `<p>Please find the attached patient consent form for <strong>${patientName}</strong>.</p>`,
       attachments: [
         {
           filename: `${patientName}_Consent_Form.pdf`,
           content: pdfBase64,
-          // contentType: "application/pdf",
+          contentType: "application/pdf",
         },
       ],
     };
-console.log("PDF buffer size:", pdfBuffer.length);
+
     await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
