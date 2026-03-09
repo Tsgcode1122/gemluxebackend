@@ -37,11 +37,11 @@ const pdfBase64 = pdfBuffer.toString("base64");
         {
           filename: `${patientName}_Consent_Form.pdf`,
           content: pdfBase64,
-          contentType: "application/pdf",
+          // contentType: "application/pdf",
         },
       ],
     };
-
+console.log("PDF buffer size:", pdfBuffer.length);
     await resend.emails.send(mailOptions);
 
     res.status(200).send("Email sent successfully");
