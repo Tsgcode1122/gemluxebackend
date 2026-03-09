@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const FROM_EMAIL = "Gem Luxe Aesthetics <noreply@noreply.com.ng>";
-const TO_EMAIL = ["falolatosin8@gmail.com"];
+const TO_EMAIL = ["gemluxemedspa@gmail.com"];
 
 const sendPdfEmail = async ({
   htmlContent,
